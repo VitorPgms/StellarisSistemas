@@ -45,3 +45,9 @@ form {
     color: white;
     border: 1px solid white;
 }
+
+.error {
+    color: white;
+    background-color: red;
+    display: none;
+}
