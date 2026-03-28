@@ -9,7 +9,19 @@ function onChangePassword() {
 }
 
 function login() {
-    window.location.href = "pages/home/home.html"; /* Navegação entre tela  */
+    firebase.auth().signInWithEmailAndPassword(form.email().value, form.password().value).then(response => {
+        window.location.href = "pages/home/home.html"; /* Navegação entre tela  */
+    }).catch(error => {
+        alert(getErrorMessage(error));
+    });
+    
+}
+
+function getErrorMessage(error) {
+    if (error.code === "auth/user-not-found") {
+        return "Usuário não encontrado";
+    }
+    return error.message;
 }
 
 function register() {
