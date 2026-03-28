@@ -8,8 +8,16 @@ function onChangePassword() {
     tooglePasswordError();
 }
 
+function login() {
+    window.location.href = "pages/home/home.html"; /* Navegação entre tela  */
+}
+
+function register() {
+    window.location.href = "pages/register/register.html"; /* Navegação entre tela  */
+}
+
 function isEmailValid() {
-    const email = document.form.email().value;
+    const email = form.email().value;
     if (!email) {
         return false;
     }
@@ -17,33 +25,29 @@ function isEmailValid() {
 }
 
 function toogleEmailError() {
-    const email = document.form.email().value;
+    const email = form.email().value;
     form.emailRequiredError().style.display = email ? 'none' : 'block';
+
     form.emailInvalidError().style.display = validateEmail(email) ? 'none' : 'block';
 
 }
 
 function tooglePasswordError() {
-    const password = document.form.password().value;
+    const password = form.password().value;
     form.passwordRequiredError().style.display = password ? 'none' : 'block';
 }
 
 function toogleButtonsDisable() {
     const emailValid = isEmailValid();
-    document.form.recoverPassword().disabled = !emailValid;
+    form.recoverPassword().disabled = !emailValid;
 
     const passwordValid = isPasswordValid();
-    document.form.loginButton().disabled = !emailValid || !passwordValid;
+    form.loginButton().disabled = !emailValid || !passwordValid;
 
 }
 
 function isPasswordValid() {
-    const password = document.form.password().value;
-    if (!password) {
-        return false;
-    }
-    return true
-
+    return form.password().value ? true : false;
 }
 
 const form = {
